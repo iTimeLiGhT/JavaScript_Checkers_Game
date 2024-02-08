@@ -1,0 +1,191 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Foo Checkers</title>
+  <link rel="stylesheet" href="./Checkers.css">
+  <link rel="icon" href=X type="image/x-icon">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+
+<body>
+  <div id="dialog" title="Let's start, what's your name?">
+    <label for="player1"><b>Player 1:</b></label>
+    <input type="text" id="player1" placeholder="Enter name for Player 1" maxlength="8">
+    <br>
+    <label for="player2"><b>Player 2:</b></label>
+    <input type="text" id="player2" placeholder="Enter name for Player 2" maxlength="8">
+    <br>
+    <div id="msg"><b>The maximum length is 8 characters</b></div>
+    <br>
+    <div class="button-container"><button id="startButton">Start</button></div>
+</div>
+<div id="dialog-winner">
+  <span><img src="./Files/crown.png" width="50"><img></span>
+  <span><b>The winner is:</b></span>
+  <br>
+  <span><p><span id="winner-name"></span></b></span>
+  <br>
+  <div class="button-container"><button id="restart-bt1" class="button-win-ds">Reset Game</button></div>
+</div>
+<div id="dialog-error">
+  <span><img src="./Files/Error.png" width="55"><img></span>
+  <br>
+  <span><b>Illegal move, try again!</b></span>
+</div>
+<div id="dialog-error-endTurn">
+  <span><img src="./Files/Error.png" width="55"><img></span>
+  <br>
+  <span><b>You must finish your move!</b></span>
+</div>
+  <div class="continer-top">
+    <span id="scoreboard">
+      <div class="scoreboard scoreboard-redTurn">
+        <div class="player">
+          <div class="player-icon"><img src="./Files/P_RED.png" width="35"></div>
+          <div class="player-info">
+            <p><span id="player1Name">Player 1</span></p>
+            <p>Score: <span id="player1Score"></span></p>
+          </div>
+        </div>
+      <div class="container-logo">
+        <div><img src="./Files/Logo.png" width="235" alt="Logo"></div>
+        <div>
+          <span><button id="restart-bt2" class="button-ds">Reset Game</button></span>
+          <span><button id="endtern-bt" class="button-ds">End My Turn</button></span>
+          <a href="./Files/ruleBook.pdf" target="_blank"><span><button id="endtern-bt" class="button-ds">Rule Book</button></span></a>
+        </div>
+    </div>
+        <div class="player">
+          <div class="player-icon"><img src="./Files/P_WHITE.png" width="35"></div>
+          <div class="player-info">
+            <p><span id="player2Name">Player 2</span></p>
+            <p>Score: <span id="player2Score"></span></p>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div id="continer-board">
+    <div class="board">
+      <div class="white"  x="0" y="0"></div>
+      <div class="black"  x="1" y="0">
+        <div class="piece pawn red-piece" x="1" y="0" ></div>
+      </div>
+      <div class="white"  x="2" y="0"></div>
+      <div class="black"  x="3" y="0">
+        <div class="piece pawn red-piece" x="3" y="0"></div>
+      </div>
+      <div class="white"  x="4" y="0"></div>
+      <div class="black"  x="5" y="0">
+        <div class="piece pawn red-piece" x="5" y="0"></div>
+      </div>
+      <div class="white"  x="6" y="0"></div>
+      <div class="black"  x="7" y="0">
+        <div class="piece pawn red-piece" x="7" y="0"></div>
+      </div>
+      <div class="black"  x="0" y="1">
+        <div class="piece pawn red-piece" x="0" y="1"></div>
+      </div>
+      <div class="white"  x="1" y="1"></div>
+      <div class="black"  x="2" y="1">
+        <div class="piece pawn red-piece" x="2" y="1"></div>
+      </div>
+      <div class="white"  x="3" y="1"></div>
+      <div class="black"  x="4" y="1">
+        <div class="piece pawn red-piece" x="4" y="1"></div>
+      </div>
+      <div class="white"  x="5" y="1"></div>
+      <div class="black"  x="6" y="1">
+        <div class="piece pawn red-piece" x="6" y="1"></div>
+      </div>
+      <div class="white"  x="7" y="1"></div>
+      <div class="white"  x="0" y="2"></div>
+      <div class="black"  x="1" y="2">
+        <div class="piece pawn red-piece" x="1" y="2"></div>
+      </div>
+      <div class="white"  x="2" y="2"></div>
+      <div class="black"  x="3" y="2">
+        <div class="piece pawn red-piece" x="3" y="2"></div>
+      </div>
+      <div class="white"  x="4" y="2"></div>
+      <div class="black"  x="5" y="2">
+        <div class="piece pawn red-piece" x="5" y="2"></div>
+      </div>
+      <div class="white"  x="6" y="2"></div>
+      <div class="black"  x="7" y="2">
+        <div class="piece pawn red-piece" x="7" y="2"></div>
+      </div>
+      <div class="black"  x="0" y="3"></div>
+      <div class="white" x="1" y="3"></div>
+      <div class="black"  x="2" y="3"></div>
+      <div class="white" x="3" y="3"></div>
+      <div class="black"  x="4" y="3"></div>
+      <div class="white" x="5" y="3"></div>
+      <div class="black"  x="6" y="3"></div>
+      <div class="white" x="7" y="3"></div>
+      <div class="white" x="0" y="4"></div>
+      <div class="black"  x="1" y="4"></div>
+      <div class="white" x="2" y="4"></div>
+      <div class="black"  x="3" y="4"></div>
+      <div class="white" x="4" y="4"></div>
+      <div class="black"  x="5" y="4"></div>
+      <div class="white" x="6" y="4"></div>
+      <div class="black"  x="7" y="4"></div>
+      <div class="black"  x="0" y="5">
+        <div class="piece pawn white-piece" x="0" y="5"></div>
+      </div>
+      <div class="white"  x="1" y="5"></div>
+      <div class="black"  x="2" y="5">
+        <div class="piece pawn white-piece" x="2" y="5"></div>
+      </div>
+      <div class="white"  x="3" y="5"></div>
+      <div class="black"  x="4" y="5">
+        <div class="piece pawn white-piece" x="4" y="5"></div>
+      </div>
+      <div class="white"  x="5" y="5"></div>
+      <div class="black"  x="6" y="5">
+        <div class="piece pawn white-piece" x="6" y="5"></div>
+      </div>
+      <div class="white"  x="7" y="5"></div>
+      <div class="white"  x="0" y="6"></div>
+      <div class="black"  x="1" y="6">
+        <div class="piece pawn white-piece" x="1" y="6"></div>
+      </div>
+      <div class="white"  x="2" y="6"></div>
+      <div class="black"  x="3" y="6">
+        <div class="piece pawn white-piece" x="3" y="6"></div>
+      </div>
+      <div class="white"  x="4" y="6"></div>
+      <div class="black"  x="5" y="6">
+        <div class="piece pawn white-piece" x="5" y="6"></div>
+      </div>
+      <div class="white"  x="6" y="6"></div>
+      <div class="black"  x="7" y="6">
+        <div class="piece pawn white-piece" x="7" y="6"></div>
+      </div>
+      <div class="black"  x="0" y="7">
+        <div class="piece pawn white-piece" x="0" y="7"></div>
+      </div>
+      <div class="white"  x="1" y="7"></div>
+      <div class="black"  x="2" y="7">
+        <div class="piece pawn white-piece" x="2" y="7"></div>
+      </div>
+      <div class="white"  x="3" y="7"></div>
+      <div class="black"  x="4" y="7">
+        <div class="piece pawn white-piece" x="4" y="7"></div>
+      </div>
+      <div class="white"  x="5" y="7"></div>
+      <div class="black"  x="6" y="7">
+        <div class="piece pawn white-piece" x="6" y="7"></div>
+      </div>
+      <div class="white"  x="7" y="7"></div>
+    </div>
+  </div>
+  <script src="./Checkers.js"></script>
+</body>
+</html>
